@@ -1,0 +1,417 @@
+{% extends 'feed/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .popup {
+        display: none;
+        position: fixed;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-top:20px;
+        z-index: 1;
+        overflow: auto;
+        
+      }
+      
+      .popup-content {
+        background-color: black;
+        padding: 20px;
+        border-radius: 5px;
+        position: relative;
+       
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        
+      }
+      
+      .close {
+        color: red;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        font-size: 50px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      
+      
+      
+      
+</style>
+
+<div id="popupContainer" class="popup col-md-5 text-center mt-3">
+    <div class="popup-content ">
+      <span class="close" id="closePopupBtn">&times;</span>
+      <h1 class="text-center text-white">Contact Me</h1>
+      <form id="myForm mt-3">
+        <form method="post" action="{% url 'contact' %}">
+            {% csrf_token %}
+            <div class="form-group py-2">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+                <input type="text" class="form-control text-light" placeholder="Name" name="name" required>
+              </div>
+            </div>
+            <div class="form-group py-1">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                </div>
+                <input type="email" class="form-control text-light" placeholder="Email" name="email" required>
+              </div>
+            </div>
+
+            
+            
+            <div class="form-group py-1 text-light">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-comment-alt"></i></span>
+                </div>
+                <textarea class="form-control text-light" placeholder="Message" name="message" rows="5" id="glow" required></textarea>
+              </div>
+            </div>
+            <div class="form-group py-3">
+              <button type="submit" class="btn btn-dark btn-lg" id="ba"><span style="font-family:'Courier New', Courier, monospace;font-weight: bold; color: rgb(10, 202, 228);">Submit</span><i class="fas fa-paper-plane px-2" id="icons"></i></button>
+          </div>
+            
+          </form>
+      </form>
+    </div>
+  </div>
+  
+
+
+    <section class=" descript "  id="home">
+        <div class="container ">
+
+            <div class="small-container ">
+                <div class="row">
+                    <div class="col-md-6 initial-0 aos-init " data-aos="zoom-in" data-aos-delay="200">
+                        <p id="hey">HEY THERE !</p>
+                {% for infor in info %}
+                        <h1 id="name" class="bounce">I'M {{infor.name_complete}} </h1>
+                        <h3> A Full Stack Developer</h3>
+                        <p> <span id="big"></span>{{infor.mini_about}}</p>
+
+                        <ul class="list-inline py-5">
+                            <li class="list-inline-item"><a href="{{infor.github}}"><i class="fab fa-github" style="background: transparent;"></i></a></li>
+                            <li class="list-inline-item"><a href="{{infor.instagram}}"><i class="fab fa-twitter"></i></a></li>
+                            
+                            <li class="list-inline-item"><a href="{{infor.instagram}}"><i class="fab fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="{{infor.twitter}}"><i class="fab fa-linkedin" style="background: transparent;"></i></a></li>
+                        </ul>
+                        <div class="button">
+                            <a > <button class="main-button2" id="openPopupBtn">Contact me <i class="uil uil-message"style="" ></i>  </button></a>
+                            <a class="main-button ml-2" href="{% url 'download_cv' %}"  rel="noopener noreferrer"> <button id="btn2">Download Cv <i class="uil uil-import"></i></i>
+                            </button></a>
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 initial-1 aos-init" data-aos="zoom-in" data-aos-delay="300">
+                        <img class="animated-image ml-4" src="{% static 'images/peace.png' %}" alt="">
+                    </div>
+{% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="about its-me " id="about">
+        <div class="container2">
+
+            <div class="small-container2 ">
+                <div class="row2 initial-3">
+                    {% for aboutme in about %}
+                    <div class="col-md-6 aos-init" data-aos="fade-up-right" data-aos-delay="700">
+                        <img src="{{aboutme.photo.url}}" alt="">
+                    </div>
+                    <div class="col-md-6 initial-4">
+                        <div class="title aos-init" data-aos="zoom-in" data-aos-delay="200">
+                            <h1 style="font-weight: bold;">{{aboutme.title}}</h1>
+                        </div>
+                        <p data-aos="zoom-in" data-aos-delay="200" class="aos-init">{{aboutme.description1}}</p>
+                        <p data-aos="zoom-in" data-aos-delay="200" class="aos-init">{{aboutme.description2}}</p>
+                        <div class="icons aos-init" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="icon-container">
+                                <i class="fa fa-html5" style="color: rgb(224, 6, 6);"></i>
+                                <p>Html5</p>
+                              </div>
+                              
+                              <div class="icon-container">
+                                <i class="fa fa-css3" aria-hidden="true" style="color: #38a4ec;"></i>
+                                <p>Css</p>
+                              </div>
+                              
+                              <div class="icon-container">
+                                <ion-icon name="logo-javascript" style="color: yellow; font-size: 35px;"></ion-icon>
+                                <p>Javascript</p>
+                              </div>
+                              
+                              <div class="icon-container">
+                                <ion-icon name="logo-react" style="color: cyan; font-size: 35px;"></ion-icon>
+                                <p>Reactjs</p>
+                              </div>
+                              
+                              <div class="icon-container">
+                                <ion-icon name="logo-python" style="color: #38a4ec; font-size: 35px;"></ion-icon>
+                                <p>Python</p>
+                              </div>
+                              
+                              <div class="icon-container">
+                                <i class="fa fa-database" style="color: orangered;"></i>
+                                <p>sql-database</p>
+                              </div>
+                              
+                            <!-- <div class="django"> <img src="{% static 'images/django.png' %}" width="40" height="80">
+                            </div> -->
+
+
+                        </div>
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <article>
+            <div class="container skills" id="skills">
+
+                <div class="small-container">
+                    <div class="row9  mx-5">
+                        <div class="col-md-10 initial-5">
+                            <div class="title">
+                                <h1 class="">SKILLS</h1>
+                            </div>
+                            <div class="all-bars">
+                                <div class="bars aos-init" data-aos="zoom-in" data-aos-delay="800">
+                                    <div class="bar-info">
+                                        <p>Frondend</p>
+                                        <h5>50%</h5>
+                                    </div>
+                                   
+
+                                    <div class="bar">
+                                        <div class="progress" id="oneProgressBar"></div>
+                                    </div>
+                                </div>
+                                <div class="bars aos-init" data-aos="zoom-in" data-aos-delay="300">
+                                    <div class="bar-info">
+                                        <p>Backend</p>
+                                        <h5>80%</h5>
+                                    </div>
+                                    <div class="bar">
+                                        <div class="and" id="oneProgressBar"></div>
+                                    </div>
+                                </div>
+                                {% comment %} <div class="bars aos-init" data-aos="zoom-in" data-aos-delay="300">
+                                    <div class="bar-info">
+                                        <p>Javascript</p>
+                                        <h5>50%</h5>
+                                    </div>
+                                    <div class="bar">
+                                        <div class="hulet" id="oneProgressBar"></div>
+                                    </div>
+                                </div>
+                                <div class="bars aos-init" data-aos="zoom-in" data-aos-delay="400">
+                                    <div class="bar-info">
+                                        <p>python</p>
+                                        <h5>85%</h5>
+                                    </div>
+                                    <div class="bar">
+                                        <div class="sost" id="oneProgressBar"></div>
+                                    </div>
+                                </div>
+                                <div class="bars aos-init" data-aos="zoom-in" data-aos-delay="500">
+                                    <div class="bar-info">
+                                        <p>Java</p>
+                                        <h5>70%</h5>
+                                    </div>
+                                    <div class="bar">
+                                        <div class="arat" id="oneProgressBar"></div>
+                                    </div>
+                                </div>
+                                <div class="bars aos-init" data-aos="zoom-in" data-aos-delay="600">
+                                    <div class="bar-info">
+                                        <p>Django</p>
+                                        <h5>90%</h5>
+                                    </div>
+                                    <div class="bar">
+                                        <div class="amst" id="oneProgressBar"></div>
+                                    </div>
+                                </div>
+                                <div class="bars aos-init" data-aos="zoom-in" data-aos-delay="700">
+                                    <div class="bar-info">
+                                        <p>sql-database</p>
+                                        <h5>90%</h5>
+                                    </div>
+                                    <div class="bar">
+                                        <div class="sdst" id="oneProgressBar"></div>
+                                    </div>
+                                </div> {% endcomment %}
+                            </div>
+                        </div>
+                        {% comment %} <div class="col-md-6">{% include 'feed/index.html' %}</div> {% endcomment %}
+                    </div>
+                </div>
+                <div class="initial-8 aos-init" data-aos="fade-down-right" data-aos-delay="300">
+    
+                    {% include 'feed/index.html' %}
+                </div>
+            </div>
+            
+        </article>
+        {% comment %} <div class="initial-8 aos-init mt-0" data-aos="fade-down-right" data-aos-delay="300">
+    
+            {% include 'feed/index.html' %}
+         </div> {% endcomment %}
+    </section>
+
+
+
+    <div class="work">
+        <div class="container" id="work">
+            <div class="title2">
+                <h1>MY WORK</h1>
+            </div>
+            <div class="small-container ">
+                <div class="row3 ">
+                    {% for sys in skills %}
+                    <div class="card initial-6 py-5 w- aos-init" data-aos="zoom-in" data-aos-delay="500">
+
+                        {% comment %} {% if photo %} {% endcomment %}
+                        <!-- If it is defined, display the image -->
+                           <img src="{{ sys.photo.url }}" alt="">
+                        {% comment %} {% else %} {% endcomment %}
+                        <!-- If it is not defined, display a placeholder or alternative content -->
+                            {% comment %} <p>No image available</p> {% endcomment %}
+
+                        {% comment %} {% endif %} {% endcomment %}
+                        <div class="card-body col-5-info px-3 py-3">
+                            <h3 class="pb-1">{{sys.title}}</h3>
+                            <p class="pb-1">{{sys.skill}}</p>
+                            <button><a href="{{sys.link}}">VISIT</a></button>
+
+                        </div>
+
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% comment %} <div class="initial-8 aos-init " data-aos="fade-down-right" data-aos-delay="300">
+    
+  {% include 'feed/index.html' %}
+</div> {% endcomment %}
+
+    <footer id="contact">
+        <div class="container">
+            <div class="title5">
+                <h1>CONTACT ME</h1>
+            </div>
+            <div class="small-container">
+                <div class="row4">
+                {% for infor in info %}
+   
+                    <div class="col-md-6 initial-8 aos-init" data-aos="fade-down-right" data-aos-delay="300">
+                        <p id="helo">Wanna talk about a project or just saying hi <img src="{%  static 'images/e.png' %}" alt="" id="e" class="wave"></p>
+
+                        <div class="contact-info">
+                            <div class="c-ico">
+                    <i style="color: rgb(233, 218, 4); font-size: 30px" class="fa fa-comments"></i> <span id="io">Say Hello</span></i>
+
+                            </div>
+                            <p>Email: <span>{{infor.email}}</span></p>
+                            <p>Phone: <span>{{infor.phone}}</span></p>
+                        </div>
+                        <div class="contact-info">
+                            <div class="c-ico">
+                                <i style="color: rgb(255, 51, 0); font-size: 30px;" class="fas fa-map-marker-alt"></i><span id="io">Find me in</span>
+                            </div>
+                            
+                            <p><span>{{infor.address}}</span></p>
+
+                        </div>
+
+                        <ul class="list-inline py-5">
+                            <li class="list-inline-item"><a href="{{infor.github}}"><i class="fab fa-github" style="background: transparent;"></i></a></li>
+                            <li class="list-inline-item"><a href="{{infor.instagram}}"><i class="fab fa-twitter"></i></a></li>
+                            
+                            <li class="list-inline-item"><a href="{{infor.instagram}}"><i class="fab fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="{{infor.twitter}}"><i class="fab fa-linkedin" style="background: transparent;"></i></a></li>
+                        </ul>
+                        
+                    </div>
+                    <div class=" col-md-6 initial-7 aos-init " data-aos="zoom-in " data-aos-delay="700 ">
+                        <img src="/static/images/avatar/15.png" alt="">
+                    </div>
+      {% endfor %}
+                </div>
+                <div class="footing ">
+                    <div class="row justify-content-center ">
+                        <div class="col-md-4 ">
+                            <p>Designed By </p>
+                            <p class="sol" style="">Dereje Amare</p>
+                            <p>A Full Stack Developer</p>
+                        </div>
+                    </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="up-arrow ">
+            <div class="arrow ">
+                <a href="# "><i class="fa fa-angle-up "></i>
+            </a>
+            </div>
+        </div>
+
+    </footer>
+
+    <div id="preloader"></div>
+
+    <script>
+        // Get the button that opens the popup
+// Get the button that opens the popup
+var openPopupBtn = document.getElementById("openPopupBtn");
+
+// Get the popup
+var popup = document.getElementById("popupContainer");
+
+// Get the button element that closes the popup
+var closePopupBtn = document.getElementById("closePopupBtn");
+
+// When the user clicks the button, open the popup
+openPopupBtn.onclick = function() {
+  popup.style.display = "block";
+}
+
+// When the user clicks on the close button, close the popup
+closePopupBtn.onclick = function() {
+  popup.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the popup, close it
+window.onclick = function(event) {
+  if (event.target == popup) {
+    popup.style.display = "none";
+  }
+}
+
+    </script>
+
+{% endblock content %}

@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>D E R E J E</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    {% comment %} <link rel="icon"  href="{% static 'images/beso.png' %}"> {% endcomment %}
+    <link rel="icon" href="/Assets/img/15.jpg">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="{% static 'icofont/icofont.min.css' %}"> -->
+    <!-- <link rel="stylesheet" href="{% static 'fontawesome-free/css/all.min.css' %}"> -->
+    <!-- <link rel="stylesheet" href="{% static 'aos/aos.css' %}"> -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css">
+
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- links -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="preload" href="{% static 'images/fonts/Agustina.21f233e1.woff' %}" as="font" type="font/woff" crossorigin="">
+    <script src="https://use.fontawesome.com/66c3c19309.js"></script>
+    <script src="https://unpkg.com/ionicons@5.5.3/dist/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href= "{% static 'css/swiper-bundle.min.css' %}">
+
+    <!--=============== CSS ===============-->
+
+
+    
+    <style>
+        .main-button2{
+            background-color: aliceblue;
+            color: black;
+        }
+
+        
+    </style>
+</head>
+<body data-aos-easing="ease" data-aos-duration="1500" data-aos-delay="0">
+    {% include 'feed/navbar.html' %}
+    {% block content%}
+
+    {% endblock content %}
+
+    <script src= "{% static 'js/swiper-bundle.min.js' %}"></script>
+
+      <!--=============== MAIN JS ===============-->
+    
+
+  
+    <script src="{% static 'jquery/jquery.min.js' %}"></script>
+
+    <!-- <script src="{% static 'isotope-layout/isotope.pkgd.min.js' %}'"></script> -->
+    <!-- <script src="{% static 'aos/aos.js' %}"></script> -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <script src="{% static 'jquery.easing/jquery.easing.min.js' %}"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

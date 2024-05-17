@@ -1,0 +1,39 @@
+<button type="button"  class="mobile-nav-toggle d-lg-none  transparent-card" > <i class="fas fa-bars mt-4"></i></button>
+    <header id="header" class="fixed-top ">
+        <div class="container-fluid  navbur">
+
+            <div class="navi">
+                <div class="col-xl-9 d-flex align-items-center lefty">
+                    <h1  class="logo mr-auto" id="just"><a href="{% url 'main_home' %}" id="mainlogo"><span class='text-white' style="font-weight:bolder; font-size:55px">||</span>DA.<span class='text-white' style="font-weight:bolder; font-size:70px"></span></a></h1>
+
+                    <nav class="nav-menu d-none d-lg-block float-right">
+                        <ul>
+                            <nav class="nav-menu d-none d-lg-block float-right">
+                                <ul>
+                                    {% if request.path == '/contact/' or request.path == '/upload-cv/' %}
+                                        <li><a href="{% url 'main_home' %}" id="home-link">Back to Home</a></li>
+                                    {% else %}
+                                        <li class="active"><a href="#home" id="home-link">Home</a></li>
+                                        <li><a href="#about" id="about-link">About</a></li>
+                                        <li><a href="#skills" id="skills-link">Skills</a></li>
+                                        <li><a href="#work" id="work-link">My Work</a></li>
+                                        <li><a href="#contact" id="contact-link">Contact</a></li>
+                                        {% comment %} <div class="invert pl-1" id="theme-button">
+                                            <input type="checkbox" class="l ">
+                                        </div> {% endcomment %}
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                            
+
+                        </ul>
+                    </nav>
+                    
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </header>

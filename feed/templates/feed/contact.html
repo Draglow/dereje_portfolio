@@ -1,0 +1,77 @@
+{% extends 'feed/base.html' %}
+
+{% block content %}
+<div class=" py-5 initial-1 aos-init" data-aos="zoom-in" data-aos-delay="300" id="makec">
+  <div class="container py-5 text-center justify-content-center">
+  <div class="row  text-center justify-content-center">
+      <div class="col-md-6 py-5">
+          
+          <div class="card  custom-shadow transparent-card text-center">
+              <div class="card-header">
+                  <h1> <span style="font-family: 'Courier New', Courier, monospace; color: rgb(0, 225, 255); font-weight: bold;">Contact Us</span> </h1>
+              </div>
+            <div class="card-body">
+
+              {% if messages %}
+                  {% for message in messages %}
+                      {% if message.tags == 'error' %}
+                          <div class="alert alert-danger alert-transparent">
+                              <ul class="mb-0">
+                                  <li>{{ message }}</li>
+                              </ul>
+                          </div>
+                      {% elif message.tags == 'success' %}
+                          <div class="alert alert-success alert-transparent">
+                              <ul class="mb-0">
+                                  <li>{{ message }}</li>
+                              </ul>
+                          </div>
+                      {% endif %}
+                  {% endfor %}
+              {% endif %}
+
+              <form method="post" action="{% url 'contact' %}">
+                {% csrf_token %}
+                <div class="form-group py-2">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                    <input type="text" class="form-control text-light" placeholder="Name" name="name" required>
+                  </div>
+                </div>
+                <div class="form-group py-1">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                    </div>
+                    <input type="email" class="form-control text-light" placeholder="Email" name="email" required>
+                  </div>
+                </div>
+
+                
+                
+                <div class="form-group py-1 text-light">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-comment-alt"></i></span>
+                    </div>
+                    <textarea class="form-control text-light" placeholder="Message" name="message" rows="5" id="glow" required></textarea>
+                  </div>
+                </div>
+                <div class="form-group py-3">
+                  <button type="submit" class="btn btn-dark btn-lg" id="ba"><span style="font-family:'Courier New', Courier, monospace;font-weight: bold; color: rgb(10, 202, 228);">Submit</span><i class="fas fa-paper-plane px-2" id="icons"></i></button>
+              </div>
+                
+              </form>
+            </div>
+          </div>
+      </div>
+  </div>
+ 
+</div>
+</div>
+
+
+
+{% endblock content %}
