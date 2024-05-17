@@ -36,5 +36,5 @@
 </section>
         <!-- Other sections -->
         <footer>
-            <p>&copy; 2024 Your Name</p>
+            <p>&copy; 2024 Dereje Amare</p>
         </footer>
