@@ -285,11 +285,11 @@
             <div class="small-container ">
                 <div class="row3 ">
                     {% for sys in skills %}
-                    <div class="card initial-6 py-5 w- aos-init" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="card initial-6 py-5 w- aos-init" data-aos="zoom-in" data-aos-delay="500" style="width: 200px; height: 500px;">
 
                         {% comment %} {% if photo %} {% endcomment %}
                         <!-- If it is defined, display the image -->
-                           <img src="{{ sys.photo.url }}" alt="">
+                           <img src="{{ sys.photo.url }}" alt=""  >
                         {% comment %} {% else %} {% endcomment %}
                         <!-- If it is not defined, display a placeholder or alternative content -->
                             {% comment %} <p>No image available</p> {% endcomment %}
