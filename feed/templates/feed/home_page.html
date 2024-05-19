@@ -1,6 +1,7 @@
 {% extends 'feed/base.html' %}
 {% load static %}
 {% block content %}
+
 <style>
     .popup {
         display: none;
@@ -43,8 +44,8 @@
     <div class="popup-content ">
       <span class="close" id="closePopupBtn">&times;</span>
       <h1 class="text-center text-white">Contact Me</h1>
-      <form id="myForm mt-3">
-        <form method="post" action="{% url 'contact' %}">
+      <form id="myForm mt-3" method="post" action="{% url 'contact' %}">
+        
             {% csrf_token %}
             <div class="form-group py-2">
               <div class="input-group">
@@ -77,15 +78,16 @@
               <button type="submit" class="btn btn-dark btn-lg" id="ba"><span style="font-family:'Courier New', Courier, monospace;font-weight: bold; color: rgb(10, 202, 228);">Submit</span><i class="fas fa-paper-plane px-2" id="icons"></i></button>
           </div>
             
-          </form>
+          
       </form>
     </div>
   </div>
-  
+
 
 
     <section class=" descript "  id="home">
         <div class="container ">
+            {% include 'feed/message.html' %}
 
             <div class="small-container ">
                 <div class="row">
